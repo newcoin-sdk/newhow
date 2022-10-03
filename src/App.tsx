@@ -17,7 +17,7 @@ import {
 } from "react-router-dom";
 import { Explore } from './Pages/Explore';
 import { AppLayout } from "./Components/AppLayout";
-import { Home } from "./Pages/Home";
+import {Home} from "./Pages/Home";
 import { SignOut } from "./Pages/SignOut";
 
 

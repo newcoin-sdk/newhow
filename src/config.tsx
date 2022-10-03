@@ -1,7 +1,7 @@
 import { ROUTE_ACCESS_LEVELS } from "@newstackdev/iosdk/dist/overmind/routing/state";
 import { config as baseConfig } from "@newstackdev/iosdk/dist/config";
 
-import { Home } from "./Pages/Home";
+import {Home} from "./Pages/Home";
 // import { Explore } from "./Pages/Explore";
 
 import { get } from "lodash";
