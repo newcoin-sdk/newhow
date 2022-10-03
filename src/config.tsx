@@ -1,8 +1,9 @@
 import { ROUTE_ACCESS_LEVELS } from "@newstackdev/iosdk/dist/overmind/routing/state";
 import { config as baseConfig } from "@newstackdev/iosdk/dist/config";
 
-import {Home} from "./Pages/Home";
-// import { Explore } from "./Pages/Explore";
+import  Dashboard  from "./containers/Dashboard";
+
+
 
 import { get } from "lodash";
 
@@ -53,12 +54,8 @@ export const apiBaseUrl = apiBaseUrls[stage];
 
 // Customize here
 export const config = {
-	ignoreWarnings: [/Failed to parse source map/, /[eslint]/],
 	...baseConfig,
-	env: {
-		stage,
-		env: (stage || "").split(/-/)[1]
-	},
+
 	settings: {
 		newgraph: {
 			baseUrl: apiBaseUrl,
@@ -79,12 +76,10 @@ export const config = {
 			name: process.env.REACT_APP_IOSDK_APP_NAME || APP_DOMAIN
 		},
 		routing: {
-			// routeAccessLevels: {
-			// 	...ROUTE_ACCESS_LEVELS,
-			// 	"/": (st, _globalState) => true, // apps should temporarily use the second arg
-			// 	"/explore": (st) => true,
-			// 	"/counter": (st) => true,
-			// }
+			routeAccessLevels: {
+				// ...ROUTE_ACCESS_LEVELS,
+				// apps should temporarily use the second arg
+			} 
 		},
 		// indicators let us know when an action is in progress
 		// setting indicators for all actions for progress is too costly and may become recursive, we filter using this setting
@@ -95,9 +90,8 @@ export const config = {
 	routes: {
 		// override built-in routes here
 		overrides: {
-			"/explore": Home,
-			"/": Home
+			"/": Dashboard,
+			"/explore": Dashboard,
 		}
 	}
 };
-
