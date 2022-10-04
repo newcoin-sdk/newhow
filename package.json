@@ -7,8 +7,6 @@
     "axios": "^0.27.2",
     "dotenv": "^16.0.3",
     "html-react-parser": "^3.0.4",
-    "overmind": "^28.0.2",
-    "overmind-react": "^29.0.2",
     "react-quill": "^2.0.0",
     "react-redux": "^8.0.4",
     "redux": "^4.2.0",

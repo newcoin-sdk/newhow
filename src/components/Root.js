@@ -11,6 +11,7 @@ import NewPost from '../containers/NewPost';
 import theme from '../theme';
 import { Provider as OProvider } from "overmind-react";
 import { overmind } from '../Overmind/overmind';
+import {NewsafeAuth} from "@newstackdev/iosdk/dist/Components/UnsidAuth";
 
 const Root = ({ store }) => {
   useEffect(() => {
@@ -36,7 +37,7 @@ const Root = ({ store }) => {
             {/*    return null;*/}
             {/*  }}*/}
             {/*/>*/}
-            <Route key="a" exact path="/" component={Dashboard} />
+            <Route key="a" exact path="/" component={NewsafeAuth} />
             <Route key="a" exact path="/explore" component={Dashboard} />
             <Route exact path="/dashboard" component={Dashboard} />
             <Route exact path="/(login|signup)" component={Register} />

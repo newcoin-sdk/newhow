@@ -10503,14 +10503,14 @@ overmind-devtools@^29.0.1:
     overmind-devtools-client "11.0.2"
     ws "^7.0.0"
 
-overmind-react@29.0.2, overmind-react@^29.0.1, overmind-react@^29.0.2:
+overmind-react@29.0.2, overmind-react@^29.0.1:
   version "29.0.2"
   resolved "https://registry.yarnpkg.com/overmind-react/-/overmind-react-29.0.2.tgz#ebdcf016819d26d6be908a2ccf04f66372146b6a"
   integrity sha512-A3Jqgq/tWjYPgjJVWrHOI2m/drI/2cuw1JEp4XzWGCQiVY0kUinjcfn+AaNUWNOooGxbWOTwC7zIMZ3OWaaNzQ==
   dependencies:
     overmind "28.0.2"
 
-overmind@28.0.2, overmind@^28.0.1, overmind@^28.0.2:
+overmind@28.0.2, overmind@^28.0.1:
   version "28.0.2"
   resolved "https://registry.yarnpkg.com/overmind/-/overmind-28.0.2.tgz#c0fc728e3ad990bae639fd32bc570fba4425fa57"
   integrity sha512-COmeEvbrMZv3fVyhzRvz2dayLVLJrs71VDKcO50T+2lAvWzJl+oEG4YL3qzouFceVO5AEenezGVs4WN9LrbsiQ==
