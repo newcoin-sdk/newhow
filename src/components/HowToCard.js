@@ -23,7 +23,8 @@ import MenuList from '@material-ui/core/MenuList';
 import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import parse from 'html-react-parser';
-import {useAppState} from "@newstackdev/iosdk/dist/overmind";
+import {StakeModal} from "@newstackdev/iosdk/dist/Pages/Dao/Components/Modals/StakeModal";
+import styled from "styled-components";
 
 const styles = theme => ({
   card: {
@@ -72,10 +73,22 @@ const styles = theme => ({
   }
 });
 
-const HowToCard = props => {
-  const [editToggleState, seteditToggleState] = useState({open: false});
-  const nc = useAppState();
+const Modal = styled.div`{
+  .ant-modal-root {
+    width: 300px;
+    border: solid red 2px;
+  }
+  .nl-white-box-modal {
+    width: 300px;
+  }
+  .ant-image-img {
+    width: 100px !important;
+  }
+}`
 
+const HowToCard = props => {
+
+  const [editToggleState, seteditToggleState] = useState({open: false});
 
   const handleToggle = () => {
     seteditToggleState({ open: !editToggleState.open });
@@ -169,12 +182,13 @@ const HowToCard = props => {
               <ShareIcon />
             </IconButton>
           </CardActions>
+            <StakeModal visible={true} daoOwner={"dx.io"} />
         </Card>
-        <p>{nc.api.auth.user.username}</p>
       </div>
     );
 }
 
+//
 HowToCard.propTypes = {
   classes: PropTypes.object.isRequired
 };
