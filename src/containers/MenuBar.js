@@ -21,13 +21,14 @@ import { updateInput } from '../actions';
 
 const styles = theme => ({
   logo: {
-    width: 300,
-    height: 100
+    width: 400,
+    height: 150
   },
   ncAccName: {
     marginLeft:20,
-    fontSize: 20,
-    marginTop: 25,
+    marginRight: 20,
+    fontSize: 25,
+    marginTop: 30,
   },
   root: {
     width: '100%'
@@ -52,7 +53,7 @@ const styles = theme => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     border: "solid lightgray 1px",
-    marginTop: 10,
+    marginTop: 20,
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
     width: '100%',
@@ -73,7 +74,7 @@ const styles = theme => ({
   interact: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: 10,
+    marginTop: 20,
   },
   inputRoot: {
     color: 'inherit',
@@ -91,7 +92,7 @@ const styles = theme => ({
     }
   },
   sectionDesktop: {
-    marginTop: 10,
+    marginTop: 20,
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex'
@@ -236,7 +237,7 @@ class PrimarySearchMenuBar extends React.Component {
                 onClick={this.handleProfileMenuOpen}
                 color="inherit"
               >
-                <AccountCircle />
+                {/*<AccountCircle />*/}
                 <p className={classes.ncAccName}>dx.io</p>
               </IconButton>
             </div>

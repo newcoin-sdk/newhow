@@ -11,7 +11,7 @@ const styles = {
     postsContainer: {
         display: 'flex',
         flexFlow: 'row wrap',
-        width: '95%',
+        width: '97%',
         margin: '0 auto'
     },
 };
