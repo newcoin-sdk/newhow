@@ -11,6 +11,7 @@ import theme from '../theme';
 import { Provider as OProvider } from "overmind-react";
 import { overmind } from '../Overmind/overmind';
 import NcAuth from "../containers/NcAuth";
+import "../App.less";
 
 const Root = ({ store }) => {
 

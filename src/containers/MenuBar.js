@@ -21,11 +21,13 @@ import { updateInput } from '../actions';
 
 const styles = theme => ({
   logo: {
-    width: 375,
-    height: 150
+    width: 300,
+    height: 100
   },
   ncAccName: {
-    marginLeft:20
+    marginLeft:20,
+    fontSize: 20,
+    marginTop: 25,
   },
   root: {
     width: '100%'
@@ -50,7 +52,7 @@ const styles = theme => ({
     borderRadius: theme.shape.borderRadius,
     backgroundColor: alpha(theme.palette.common.white, 0.15),
     border: "solid lightgray 1px",
-    marginTop: 30,
+    marginTop: 10,
     marginRight: theme.spacing.unit * 2,
     marginLeft: 0,
     width: '100%',
@@ -71,7 +73,7 @@ const styles = theme => ({
   interact: {
     display: 'flex',
     alignItems: 'center',
-    marginTop: 30,
+    marginTop: 10,
   },
   inputRoot: {
     color: 'inherit',
@@ -89,7 +91,7 @@ const styles = theme => ({
     }
   },
   sectionDesktop: {
-    marginTop: 30,
+    marginTop: 10,
     display: 'none',
     [theme.breakpoints.up('md')]: {
       display: 'flex'
@@ -228,11 +230,6 @@ class PrimarySearchMenuBar extends React.Component {
             </div>
             <div className={classes.grow} />
             <div className={classes.sectionDesktop}>
-              <IconButton color="inherit">
-                <Badge badgeContent={0} color="secondary">
-                  <NotificationsIcon />
-                </Badge>
-              </IconButton>
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"

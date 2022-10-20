@@ -1,0 +1,323 @@
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Modals/_Modals";
+
+@import "@newstackdev/iosdk/src/styles/Colors.less";
+
+@import "./fonts/fonts.less";
+@import "~antd/dist/antd.dark.less";
+
+@import "@newstackdev/iosdk/src/styles/Antd.less";
+@import "@newstackdev/iosdk/src/styles/Utils.less";
+@import "@newstackdev/iosdk/src/styles/Layout.less";
+@import "@newstackdev/iosdk/src/styles/Typography.less";
+@import "@newstackdev/iosdk/src/styles/Buttons.less";
+
+@import "@newstackdev/iosdk/src/styles/User.less";
+@import "@newstackdev/iosdk/src/styles/FullscreenImage.less";
+@import "@newstackdev/iosdk/src/styles/Footer.less";
+
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Member/Row/MemberRow";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Standard/Row/ProposalRow";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Whitelist/Row/WhitelistProposalRow";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Whitelist/Card/WhitelistCard";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Modals/_Modals";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Standard/ViewProposalPageRow/ViewProposalRow";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Standard/Card/ProposalCard";
+@import "@newstackdev/iosdk/src/Pages/Dao/Components/Previews/Member/Card/MemberCard";
+
+@import "@newstackdev/iosdk/src/Pages/Dao/Views/Proposals/ProposalList";
+@import "@newstackdev/iosdk/src/Pages/Dao/Views/NewProposal/NewProposal";
+@import "@newstackdev/iosdk/src/Pages/Dao/Views/ProposalView/ViewProposal";
+@import "@newstackdev/iosdk/src/Pages/Dao/Utils/Dao-Utils";
+
+@import "@newstackdev/iosdk/src/Components/styles/UserWidget";
+@import "@newstackdev/iosdk/src/Pages/User/styles/UserInviteInfo";
+
+@import "@newstackdev/iosdk/src/Components/styles/UserWidget";
+@import "@newstackdev/iosdk/src/Pages/User/styles/UserInviteInfo";
+@import "@newstackdev/iosdk/src/styles/votePage/Post.less";
+
+@import "@newstackdev/iosdk/src/styles/Grids";
+@import "@newstackdev/iosdk/src/styles/Colors";
+
+.nl-white-box {
+  max-width: calc(100vw - 18px);
+  border-radius: 12px;
+  background: #959595;
+  padding: 9px;
+  margin: 0;
+
+  @media screen and (min-width: 576px) {
+    margin: 0;
+    padding: 36px;
+  }
+}
+
+.ant-btn-primary {
+  color: black;
+  border: solid lightgray 1px;
+}
+.ant-btn-primary:hover{
+  color: black;
+  border: solid lightgray 1px;
+}
+.ant-btn-primary:active{
+  color: black;
+  border: solid lightgray 1px;
+}
+.ant-btn-primary:focus{
+  color: black;
+  border: solid lightgray 1px;
+}
+
+.ant-image,
+.ant-image-size,
+.ant-image-img {
+  border-radius: 8px;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+  position: relative;
+}
+
+
+.ant-modal-wrap {
+  background-color: @nero_80_opacity;
+}
+
+.nl-white-box-modal {
+  // height: 76vh;
+  min-width: 300px;
+
+  @media screen and (max-width: 428px) {
+    // height: 80vh;
+  }
+
+  .ant-modal-header {
+    background: #959595;
+    border-bottom: none;
+  }
+
+  .ant-modal-footer {
+    border-top: none;
+    text-align: center;
+  }
+
+  .ant-modal-content {
+    .nl-white-box();
+    padding-top: 72px;
+
+    .ant-modal-close-x {
+      display: block;
+      width: 56px;
+      height: 100px;
+      font-size: 35px;
+      font-style: normal;
+      line-height: 56px;
+      text-align: center;
+      text-transform: none;
+      text-rendering: auto;
+      right: 30px;
+      top: 30px;
+      color: @secondary;
+      position: absolute;
+    }
+  }
+}
+
+.nl-button-primary {
+  width: min(299px, 100%);
+  height: 45px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+
+  &.inverse {
+    color: @lightgrey;
+    background-color: @secondary;
+  }
+}
+
+.nl-vertical-space * {
+  margin-bottom: 12px;
+}
+
+.nl-vertical-space-self {
+  padding-top: 24px;
+  padding-bottom: 24px;
+}
+
+.nl-row-vertical-space {
+  .ant-col {
+    padding-top: 12px;
+    padding-bottom: 12px;
+  }
+}
+
+.nl-slider {
+  .ant-slider-rail,
+  .ant-slider-track,
+  .ant-slider-step,
+  .ant-slider-dot,
+  .ant-slider-dot-active {
+    height: 8px;
+  }
+
+  .ant-slider-rail {
+    border: 2px solid @secondary;
+  }
+
+  .ant-slider-handle {
+    margin-top: -3px;
+  }
+
+  .ant-slider-dot {
+    top: 0;
+    background-color: @green;
+    border-color: @green;
+    display: none;
+  }
+
+  .ant-slider-track {
+    background-color: @green;
+  }
+}
+
+.nl-font-huge {
+  margin: 0;
+  font-size: clamp(20px, 120px, 9.8vw);
+  line-height: calc(1.5 * clamp(20px, 120px, 9.8vw));
+
+  &.bold {
+    font-weight: bold;
+  }
+}
+
+.nl-rating-bar-wrapper {
+  width: 100vw;
+  top: 0;
+  height: 6px;
+  position: fixed;
+  display: flex;
+  z-index: 1000;
+  align-content: center;
+}
+
+.nl-rating-bar {
+  margin: auto;
+  height: 6px;
+  border-radius: 10px;
+  background-color: #c1fa50;
+  border: 1px solid #c1fa50;
+  transition: width 0.1s, opacity 0.3s;
+}
+
+.nl-white-box-modal .ant-modal-content .ant-modal-close-x {
+  height: 10px;
+}
+
+.nl-white-box-modal .ant-modal-content {
+  border-radius: 8px;
+}
+
+
+.primary-green-btn,
+.primary-green-btn:hover,
+.primary-green-btn:active,
+.primary-green-btn:focus {
+  background-color: @green;
+  color: black;
+  border-radius: 8px;
+  border: 1px solid @green;
+  font-weight: bold;
+  stroke-width: 1px;
+}
+
+.stroke-btn-green,
+.stroke-btn-green:hover {
+  .primary-green-btn();
+  background: none;
+  color: @green;
+}
+
+.stroke-btn-white {
+  .primary-green-btn();
+  background: none;
+  color: @secondary;
+  border: 1px solid @secondary;
+}
+
+.power-up-btn,
+.power-up-btn:hover,
+.power-up-btn:focus,
+.power-up-btn:active {
+  .stroke-btn-green();
+  padding: 30px 20px;
+}
+
+.avatar-image-header {
+  width: 100%;
+  height: 34px;
+  width: 34px;
+  top: 0px;
+}
+
+.avatar-image-top-creators {
+  width: 114px;
+  height: 114px;
+
+  @media screen and (max-width: 768px) {
+    width: 66px;
+    height: 66px;
+  }
+
+  @media screen and (max-width: 428px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.avatar-image-small {
+  width: 57px;
+  height: 57px;
+
+  @media screen and (max-width: 768px) {
+    width: 66px;
+    height: 66px;
+  }
+
+  @media screen and (max-width: 428px) {
+    width: 60px;
+    height: 60px;
+  }
+}
+
+.avatar-image-tiny {
+  width: 29px;
+  height: 29px;
+
+  @media screen and (max-width: 768px) {
+    width: 33px;
+    height: 33px;
+  }
+
+  @media screen and (max-width: 428px) {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+.folder {
+  width: min(140px, 100%);
+  height: 100%;
+}
+
+.bg-hover {
+  transition: all 0.3s ease-in;
+  padding: 10px;
+  justify-content: center;
+  border-radius: 8px;
+
+  &:hover {
+    background: #272626;
+  }
+}
+

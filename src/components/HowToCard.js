@@ -78,24 +78,7 @@ const styles = theme => ({
     height: 350,
     overflow: 'hidden',
   },
-  // "nl-white-box-modal": {
-  //   bgColor:' background.paper'
-  // }
 });
-
-
-const modal = {
-  position: 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
-  width: 400,
-  height:500,
-  bgcolor: 'background.paper',
-  border: 'none',
-  boxShadow: 24,
-  p: 4,
-};
 
 const HowToCard = props => {
 
@@ -187,16 +170,6 @@ const HowToCard = props => {
               <FavoriteIcon />
             </IconButton>
             <StakeModal visible={true} daoOwner={"dx.io"} />
-            {/*<Modal*/}
-            {/*    open={true}*/}
-            {/*    onClose={handleClose}*/}
-            {/*    aria-labelledby="modal-modal-title"*/}
-            {/*    aria-describedby="modal-modal-description"*/}
-            {/*>*/}
-            {/*  <Box sx={modal}>*/}
-            {/*    <UserStake user={{ username: "dx.io" }} />*/}
-            {/*  </Box>*/}
-            {/*</Modal>*/}
           </CardActions>
         </Card>
       </div>
