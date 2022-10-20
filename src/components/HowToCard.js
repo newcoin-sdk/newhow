@@ -1,4 +1,4 @@
-import React, {useeditToggleState, useState} from 'react';
+import React, {useState} from 'react';
 import PropTypes from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -8,9 +8,8 @@ import CardActions from '@material-ui/core/CardActions';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import red from '@material-ui/core/colors/red';
+import black from '@material-ui/core/colors/grey';
 import FavoriteIcon from '@material-ui/icons/Favorite';
-import ShareIcon from '@material-ui/icons/Share';
 import MoreVert from '@material-ui/icons/MoreVert';
 import Delete from '@material-ui/icons/Delete';
 import Edit from '@material-ui/icons/Edit';
@@ -24,14 +23,19 @@ import ListItemIcon from '@material-ui/core/ListItemIcon';
 import ListItemText from '@material-ui/core/ListItemText';
 import parse from 'html-react-parser';
 import {StakeModal} from "@newstackdev/iosdk/dist/Pages/Dao/Components/Modals/StakeModal";
-import styled from "styled-components";
+import {Box, Modal} from "@material-ui/core";
+import {style} from "redux-logger/src/diff";
+import {UserStake} from "@newstackdev/iosdk/dist/Pages/User/UserStake";
 
 const styles = theme => ({
   card: {
     maxWidth: 500,
-    height: '100%',
+    height: 500,
     display: 'flex',
-    flexDirection: 'column'
+    flexDirection: 'column',
+    marginTop: 50,
+    padding: 10
+
   },
   cardWrapper: {
     position: 'relative',
@@ -54,8 +58,7 @@ const styles = theme => ({
     paddingTop: '56.25%' // 16:9
   },
   actions: {
-    flexGrow: 1,
-    alignItems: 'flex-end'
+    alignItems: 'center'
   },
   likes: {
     marginBottom: '1rem'
@@ -68,23 +71,31 @@ const styles = theme => ({
     }
   },
   avatar: {
-    backgroundColor: red[500],
+    backgroundColor: black[700],
     fontSize: '95%'
-  }
+  },
+  content: {
+    height: 350,
+    overflow: 'hidden',
+  },
+  // "nl-white-box-modal": {
+  //   bgColor:' background.paper'
+  // }
 });
 
-const Modal = styled.div`{
-  .ant-modal-root {
-    width: 300px;
-    border: solid red 2px;
-  }
-  .nl-white-box-modal {
-    width: 300px;
-  }
-  .ant-image-img {
-    width: 100px !important;
-  }
-}`
+
+const modal = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 400,
+  height:500,
+  bgcolor: 'background.paper',
+  border: 'none',
+  boxShadow: 24,
+  p: 4,
+};
 
 const HowToCard = props => {
 
@@ -168,21 +179,25 @@ const HowToCard = props => {
               </Grow>
             )}
           </Popper>
-          {/* <CardMedia className={classes.media} image="/static/images/cards/paella.jpg" title="Paella dish" /> */}
-          <CardContent>
+          <CardContent className={classes.content}>
             <Typography>{parse(body)}</Typography>
           </CardContent>
           <CardActions className={classes.actions} disableActionSpacing>
             <IconButton aria-label="Add to favorites" className={classes.noHover} onClick={handleLike}>
               <FavoriteIcon />
             </IconButton>
-            {/* TODO: replace these with likes */}
-            <small className={classes.likes}>{likes || 0}</small>
-            <IconButton aria-label="Share" className={classes.noHover}>
-              <ShareIcon />
-            </IconButton>
-          </CardActions>
             <StakeModal visible={true} daoOwner={"dx.io"} />
+            {/*<Modal*/}
+            {/*    open={true}*/}
+            {/*    onClose={handleClose}*/}
+            {/*    aria-labelledby="modal-modal-title"*/}
+            {/*    aria-describedby="modal-modal-description"*/}
+            {/*>*/}
+            {/*  <Box sx={modal}>*/}
+            {/*    <UserStake user={{ username: "dx.io" }} />*/}
+            {/*  </Box>*/}
+            {/*</Modal>*/}
+          </CardActions>
         </Card>
       </div>
     );

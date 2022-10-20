@@ -5,12 +5,15 @@ import { withStyles } from '@material-ui/core/styles';
 import MenuBar from './MenuBar';
 import HowToCard from '../components/HowToCard';
 import { getFilteredPosts } from '../reducers';
+import black from "@material-ui/core/colors/blue";
 
 const styles = {
-  postsContainer: {
-    display: 'flex',
-    flexFlow: 'row wrap'
-  }
+    postsContainer: {
+        display: 'flex',
+        flexFlow: 'row wrap',
+        width: '95%',
+        margin: '0 auto'
+    },
 };
 
 const Dashboard = ({ classes, history, match, posts, users, editPost, deletePost }) => (
