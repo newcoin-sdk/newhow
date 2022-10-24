@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AppBar from '@material-ui/core/AppBar';
@@ -106,75 +106,74 @@ const styles = theme => ({
   }
 });
 
-class PrimarySearchMenuBar extends React.Component {
-  state = {
+const PrimarySearchMenuBar = props => {
+
+  const [state, setState] = useState({
     anchorEl: null,
     mobileMoreAnchorEl: null
-  };
+  });
 
-  handleHomeClick = mobile => {
-    this.props.history.push('/dashboard');
+  const isMenuOpen = Boolean(state.anchorEl);
+  const isMobileMenuOpen = Boolean(state.mobileMoreAnchorEl);
+  const { classes, searchInput } = props;
+
+  const handleHomeClick = mobile => {
+    props.history.push('/dashboard');
     if (mobile) this.handleMobileMenuClose();
   };
 
-  handleNewPost = () => {
-    this.props.history.push('/dashboard/new');
+  const handleNewPost = () => {
+    props.history.push('/dashboard/new');
   };
 
-  handleProfileMenuOpen = event => {
-    this.setState({ anchorEl: event.currentTarget });
+  const handleProfileMenuOpen = event => {
+    setState({ ...state, anchorEl: event.currentTarget });
   };
 
-  handleMenuClose = () => {
-    this.setState({ anchorEl: null });
-    this.handleMobileMenuClose();
+  const handleMobileMenuOpen = event => {
+    setState({...state, mobileMoreAnchorEl: event.currentTarget });
   };
 
-  handleMobileMenuOpen = event => {
-    this.setState({ mobileMoreAnchorEl: event.currentTarget });
+  const handleMobileMenuClose = () => {
+    setState({ ...state, mobileMoreAnchorEl: null });
   };
 
-  handleMobileMenuClose = () => {
-    this.setState({ mobileMoreAnchorEl: null });
+
+  const handleMenuClose = props => {
+    setState({ anchorEl: null, mobileMoreAnchorEl: null });
+    handleMobileMenuClose();
   };
 
-  handleLogout = () => {
+  const handleLogout = () => {
     localStorage.removeItem('userToken');
-    this.props.history.replace('/login');
+    props.history.replace('/login');
   };
 
-  handleInput = (e) => {
-    this.props.updateInput(e.target.value);
+  const handleInput = (e) => {
+    props.updateInput(e.target.value);
   }
 
-  render() {
-    const { anchorEl, mobileMoreAnchorEl } = this.state;
-    const { classes, searchInput } = this.props;
-    const isMenuOpen = Boolean(anchorEl);
-    const isMobileMenuOpen = Boolean(mobileMoreAnchorEl);
-
-    const renderMenu = (
+  const renderMenu = (
       <Menu
-        anchorEl={anchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMenuOpen}
-        onClose={this.handleMenuClose}
+          anchorEl={state.anchorEl}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+          open={isMenuOpen}
+          onClose={handleMenuClose}
       >
-        <MenuItem onClick={this.handleMenuClose}>Profile</MenuItem>
-        <MenuItem onClick={this.handleLogout}>Logout</MenuItem>
+        <MenuItem onClick={handleMenuClose}>Profile</MenuItem>
+        <MenuItem onClick={handleLogout}>Logout</MenuItem>
       </Menu>
-    );
-
-    const renderMobileMenu = (
+  );
+  const renderMobileMenu = (
       <Menu
-        anchorEl={mobileMoreAnchorEl}
-        anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
-        transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-        open={isMobileMenuOpen}
-        onClose={this.handleMenuClose}
+          anchorEl={state.mobileMoreAnchorEl}
+          anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+          transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+          open={isMobileMenuOpen}
+          onClose={handleMenuClose}
       >
-        <MenuItem onClick={() => this.handleHomeClick(true)}>
+        <MenuItem onClick={() => handleHomeClick(true)}>
           <IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
               <Home />
@@ -182,7 +181,7 @@ class PrimarySearchMenuBar extends React.Component {
           </IconButton>
           <p>Dashboard</p>
         </MenuItem>
-        <MenuItem onClick={this.handleMobileMenuClose}>
+        <MenuItem onClick={handleMobileMenuClose}>
           <IconButton color="inherit">
             <Badge badgeContent={0} color="secondary">
               <NotificationsIcon />
@@ -190,20 +189,21 @@ class PrimarySearchMenuBar extends React.Component {
           </IconButton>
           <p>Notifications</p>
         </MenuItem>
-        <MenuItem onClick={this.handleProfileMenuOpen}>
+        <MenuItem onClick={handleProfileMenuOpen}>
           <IconButton color="inherit">
             <AccountCircle />
           </IconButton>
           <p>Profile</p>
         </MenuItem>
-        <MenuItem onClick={this.handleLogout}>
+        <MenuItem onClick={handleLogout}>
           <IconButton color="inherit">
             <PowerSettingsNew />
           </IconButton>
           <p>Logout</p>
         </MenuItem>
       </Menu>
-    );
+  );
+
 
     return (
       <div className={classes.root}>
@@ -217,7 +217,7 @@ class PrimarySearchMenuBar extends React.Component {
               <InputBase
                 placeholder="Search…"
                 value={searchInput}
-                onChange={this.handleInput}
+                onChange={handleInput}
                 classes={{
                   root: classes.inputRoot,
                   input: classes.inputInput
@@ -225,7 +225,7 @@ class PrimarySearchMenuBar extends React.Component {
               />
             </div>
             <div className={classes.interact}>
-              <IconButton onClick={this.handleNewPost} color="inherit">
+              <IconButton onClick={handleNewPost} color="inherit">
                 <AddBox />
               </IconButton>
             </div>
@@ -234,15 +234,15 @@ class PrimarySearchMenuBar extends React.Component {
               <IconButton
                 aria-owns={isMenuOpen ? 'material-appbar' : undefined}
                 aria-haspopup="true"
-                onClick={this.handleProfileMenuOpen}
+                onClick={handleProfileMenuOpen}
                 color="inherit"
               >
-                {/*<AccountCircle />*/}
+                <AccountCircle />
                 <p className={classes.ncAccName}>dx.io</p>
               </IconButton>
             </div>
             <div className={classes.sectionMobile}>
-              <IconButton aria-haspopup="true" onClick={this.handleMobileMenuOpen} color="inherit">
+              <IconButton aria-haspopup="true" onClick={handleMobileMenuOpen} color="inherit">
                 <MoreIcon />
               </IconButton>
             </div>
@@ -252,7 +252,6 @@ class PrimarySearchMenuBar extends React.Component {
         {renderMobileMenu}
       </div>
     );
-  }
 }
 
 PrimarySearchMenuBar.propTypes = {
